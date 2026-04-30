@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soluciones Industriales — Apps a medida</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid #ebebeb;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-links a:hover {
+    opacity: 0.5;
+  }
+
+  .nav-brand {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .nav-cta {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .nav-cta:hover {
+    opacity: 0.5;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    background: #fafafa;
+    position: relative;
+  }
+
+  .hero-content {
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 32px;
+  }
+
+  .hero-h1 {
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: #000;
+    margin-bottom: 24px;
+  }
+
+  .hero-h1 strong {
+    font-weight: 600;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.8;
+    max-width: 420px;
+    margin: 0 auto 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-hero-p {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-hero-p:hover {
+    background: #333;
+  }
+
+  .btn-hero-o {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: #000;
+    border: none;
+    border-bottom: 1.5px solid #000;
+    padding: 14px 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .btn-hero-o:hover {
+    opacity: 0.5;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid #ebebeb;
+  }
+
+  .hero-stat-val {
+    font-size: 28px;
+    font-weight: 300;
+    color: #000;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-stat-val strong {
+    font-weight: 600;
+  }
+
+  .hero-stat-label {
+    font-size: 10px;
+    color: #999;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: #fafafa;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    padding: 32px 0;
+    margin-bottom: 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: marquee-scroll 45s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    flex-shrink: 0;
+    width: 660px;
+    height: 420px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #ebebeb;
+    background: #ffffff;
+    transition: border-color 0.3s;
+  }
+
+  .marquee-item:hover {
+    border-color: #999;
+  }
+
+  .marquee-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .marquee-container {
+      padding: 24px 0;
+    }
+    .marquee-item {
+      width: 300px;
+      height: 200px;
+    }
+  }
+
+  /* ── SECCIONES ── */
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: #000;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .section-title span {
+    font-weight: 600;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 64px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #ebebeb;
+    margin: 0 40px;
+  }
+
+  /* ── VALUE PROPS ── */
+  .vp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #ebebeb;
+    margin-bottom: 80px;
+  }
+
+  .vp-card {
+    background: #fff;
+    padding: 48px 36px;
+    transition: background 0.3s;
+  }
+
+  .vp-card:hover {
+    background: #fafafa;
+  }
+
+  .vp-icon {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .vp-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #000;
+    margin-bottom: 8px;
+  }
+
+  .vp-desc {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ── CATÁLOGO DE APPS ── */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #ebebeb;
+  }
+
+  .app-card {
+    background: #fff;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s;
+  }
+
+  .app-card:hover {
+    background: #fafafa;
+  }
+
+  .app-name {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin-bottom: 12px;
+  }
+
+  .app-desc {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .app-features {
+    list-style: none;
+    margin-bottom: 32px;
+    flex-grow: 1;
+  }
+
+  .app-features li {
+    font-size: 11px;
+    color: #666;
+    padding: 6px 0;
+    border-bottom: 1px solid #f5f5f5;
+    line-height: 1.6;
+  }
+
+  .app-features li:last-child {
+    border-bottom: none;
+  }
+
+  .app-features li strong {
+    color: #000;
+    font-weight: 500;
+  }
+
+  .app-footer {
+    border-top: 1px solid #ebebeb;
+    padding-top: 24px;
+  }
+
+  .price-row {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .price-label {
+    font-size: 10px;
+    color: #999;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .price-val {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .price-note {
+    font-size: 10px;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  .app-cta {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 2px;
+    margin-top: 16px;
+    transition: opacity 0.2s;
+  }
+
+  .app-cta:hover {
+    opacity: 0.5;
+  }
+
+  .promo-badge {
+    display: inline-block;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 0.04em;
+    margin-top: 12px;
+  }
+
+  /* ── PRECIOS ── */
+  .pricing-note {
+    background: #fafafa;
+    padding: 48px;
+    margin-bottom: 60px;
+  }
+
+  .pricing-note-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 8px;
+  }
+
+  .pricing-note-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: #ebebeb;
+  }
+
+  .service-card {
+    background: #fff;
+    padding: 40px 32px;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .service-card:hover {
+    background: #fafafa;
+  }
+
+  .service-card.featured {
+    background: #fafafa;
+  }
+
+  .service-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  .service-tier {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 8px;
+  }
+
+  .service-name {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin-bottom: 16px;
+  }
+
+  .service-features {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .service-features li {
+    font-size: 11px;
+    color: #666;
+    padding: 5px 0;
+    border-bottom: 1px solid #f5f5f5;
+    line-height: 1.6;
+  }
+
+  .service-features li:last-child {
+    border-bottom: none;
+  }
+
+  .service-cta {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .service-cta:hover {
+    opacity: 0.5;
+  }
+
+  /* ── PROCESO ── */
+  .process-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 60px;
+  }
+
+  .process-step {
+    flex: 1;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .process-num {
+    font-size: 40px;
+    font-weight: 200;
+    color: #000;
+    margin-bottom: 16px;
+  }
+
+  .process-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 6px;
+  }
+
+  .process-desc {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: #ebebeb;
+  }
+
+  .diff-item {
+    background: #fff;
+    padding: 40px 28px;
+  }
+
+  .diff-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 8px;
+  }
+
+  .diff-val {
+    font-size: 28px;
+    font-weight: 200;
+    color: #000;
+    margin-bottom: 4px;
+  }
+
+  .diff-val strong {
+    font-weight: 600;
+  }
+
+  .diff-desc {
+    font-size: 11px;
+    color: #666;
+  }
+
+  /* ── CONTACTO ── */
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #ebebeb;
+    margin-top: 40px;
+  }
+
+  .contacto-info {
+    background: #fff;
+    padding: 48px;
+  }
+
+  .contacto-info h3 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin-bottom: 16px;
+  }
+
+  .contacto-info p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .contacto-dato {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .contacto-form-wrap {
+    background: #fff;
+    padding: 48px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    color: #000;
+    background: transparent;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-bottom-color: #000;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.3s;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover {
+    background: #333;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: #fafafa;
+    padding: 100px 40px;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: #000;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .cta-title strong {
+    font-weight: 600;
+  }
+
+  .cta-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 40px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid #ebebeb;
+  }
+
+  .footer-brand {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #666;
+  }
+
+  .footer-copy {
+    font-size: 10px;
+    color: #999;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav {
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .hero {
+      padding: 60px 20px;
+      min-height: auto;
+    }
+
+    .hero-h1 {
+      font-size: 32px;
+    }
+
+    .hero-stats {
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .wrap {
+      padding: 60px 20px;
+    }
+
+    .vp-grid,
+    .apps-grid,
+    .service-grid,
+    .diff-grid,
+    .contacto-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-row {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .section-title {
+      font-size: 26px;
+    }
+
+    .cta-section {
+      padding: 60px 20px;
+    }
+
+    .cta-title {
+      font-size: 28px;
+    }
+
+    .contacto-info,
+    .contacto-form-wrap {
+      padding: 32px 24px;
+    }
+
+    .app-card {
+      padding: 32px 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Soluciones Industriales</div>
+  <div class="nav-links">
+    <a href="#inicio">Inicio</a>
+    <a href="#propuesta">¿Por qué?</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#precios">Precios</a>
+    <a href="#proceso">Proceso</a>
+  </div>
+  <a href="#contacto" class="nav-cta">Contacto</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Apps industriales a medida</div>
+    <h1 class="hero-h1">Tecnología que trabaja<br>como <strong>tu empresa</strong></h1>
+    <p class="hero-sub">Sistemas digitales de inspección, gestión y control para manufactura. Sin instalaciones, sin servidores, desde el celular.</p>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn-hero-p">Ver soluciones</a>
+      <a href="#contacto" class="btn-hero-o">Agendar llamada</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val"><strong>0</strong></div>
+        <div class="hero-stat-label">Instalaciones requeridas</div>
+      </div>
+      <div>
+        <div class="hero-stat-val"><strong>2</strong> días</div>
+        <div class="hero-stat-label">Para recibir propuesta</div>
+      </div>
+      <div>
+        <div class="hero-stat-val"><strong>∞</strong></div>
+        <div class="hero-stat-label">Registros en la nube</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="wrap" id="propuesta">
+  <div class="section-eyebrow">Por qué elegirnos</div>
+  <h2 class="section-title">Tecnología de planta,<br><span>sin complicaciones</span></h2>
+  <p class="section-desc">Cada app funciona desde el primer día, en cualquier celular, sin instalar nada en el servidor de tu empresa.</p>
+
+  <div class="vp-grid">
+    <div class="vp-card">
+      <div class="vp-icon">📱</div>
+      <div class="vp-title">Funciona en cualquier celular</div>
+      <div class="vp-desc">iOS y Android. Sin app store. Se instala como acceso directo. Lista en segundos.</div>
+    </div>
+    <div class="vp-card">
+      <div class="vp-icon">☁️</div>
+      <div class="vp-title">Datos en la nube</div>
+      <div class="vp-desc">Sincronización en tiempo real. Todos ven los mismos datos al instante. Sin Excel compartidos.</div>
+    </div>
+    <div class="vp-card">
+      <div class="vp-icon">🔐</div>
+      <div class="vp-title">Acceso por roles</div>
+      <div class="vp-desc">Admin configura, supervisor captura. Face ID y huella para acceso rápido y seguro.</div>
+    </div>
+    <div class="vp-card">
+      <div class="vp-icon">📊</div>
+      <div class="vp-title">Exportación a Excel</div>
+      <div class="vp-desc">Reportes por fecha, KPIs, detalle por registro, departamento y reincidentes en un clic.</div>
+    </div>
+    <div class="vp-card">
+      <div class="vp-icon">🎨</div>
+      <div class="vp-title">Con tu identidad</div>
+      <div class="vp-desc">Tu logo, tu color, el nombre de tu empresa. No es una app genérica, es tu app.</div>
+    </div>
+    <div class="vp-card">
+      <div class="vp-icon">⚡</div>
+      <div class="vp-title">Propuesta en 2 días</div>
+      <div class="vp-desc">Describes tu proceso hoy. En máximo 2 días hábiles tienes propuesta y cotización exacta.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE CON IMÁGENES -->
+<div class="marquee-container">
+  <div class="marquee-track">
+    <!-- Imagen 1: Almacén -->
+    <div class="marquee-item">
+      <img src="img/marquee-almacen.png" alt="Control de Almacén">
+    </div>
+    <!-- Imagen 2: Dashboard -->
+    <div class="marquee-item">
+      <img src="img/marquee-dashboard.png" alt="Tablero de Indicadores">
+    </div>
+    <!-- Imagen 3: Seguridad EPP -->
+    <div class="marquee-item">
+      <img src="img/marquee-seguridad.png" alt="Seguridad EPP">
+    </div>
+    <!-- Duplicados para scroll infinito -->
+    <div class="marquee-item">
+      <img src="img/marquee-almacen.png" alt="Control de Almacén">
+    </div>
+    <div class="marquee-item">
+      <img src="img/marquee-dashboard.png" alt="Tablero de Indicadores">
+    </div>
+    <div class="marquee-item">
+      <img src="img/marquee-seguridad.png" alt="Seguridad EPP">
+    </div>
+  </div>
+</div>
+
+<!-- APPS CATÁLOGO -->
+<section class="wrap" id="catalogo">
+  <div class="section-eyebrow">Catálogo</div>
+  <h2 class="section-title">Elige la app<br><span>que necesita tu operación</span></h2>
+  <p class="section-desc">Cada solución probada en entorno industrial real. Precio incluye app configurada con logo, colores y catálogo de tu empresa.</p>
+
+  <div class="apps-grid">
+
+    <!-- EPP -->
+    <div class="app-card">
+      <div class="app-name">Control de EPP y BPM's</div>
+      <div class="app-desc">Inspección de Equipo de Protección Personal y Buenas Prácticas de Manufactura al inicio de turno.</div>
+      <ul class="app-features">
+        <li><strong>Checklist dinámico</strong> por departamento</li>
+        <li><strong>6 criterios BPM</strong> con firma digital</li>
+        <li><strong>Dashboard en tiempo real</strong> — KPIs y tendencias</li>
+        <li><strong>Catálogo editable</strong> sin tocar código</li>
+        <li><strong>Purga automática</strong> de fotos y firmas</li>
+      </ul>
+      <div class="app-footer">
+        <div class="price-row">
+          <div>
+            <div class="price-label">Implementación</div>
+            <div class="price-val">$8,500 MXN</div>
+            <div class="price-note">Pago único</div>
+          </div>
+          <div>
+            <div class="price-label">Mensualidad</div>
+            <div class="price-val">$1,200 MXN</div>
+            <div class="price-note">Hosting + soporte</div>
+          </div>
+        </div>
+        <div class="price-note">O proyecto completo sin mensualidad: <strong>$18,000 MXN</strong></div>
+        <div class="promo-badge">🎁 Primer mes de soporte técnico gratis</div>
+        <a href="#contacto" class="app-cta">Solicitar información →</a>
+      </div>
+    </div>
+
+    <!-- PROCESOS -->
+    <div class="app-card">
+      <div class="app-name">Control de Procesos</div>
+      <div class="app-desc">Inspección de parámetros de proceso por máquina y turno. Variables críticas, alertas y trazabilidad.</div>
+      <ul class="app-features">
+        <li><strong>Fichas por máquina</strong> con parámetros específicos</li>
+        <li><strong>Alertas fuera de rango</strong> al supervisor</li>
+        <li><strong>Trazabilidad completa</strong> de revisiones</li>
+        <li><strong>Historial filtrable</strong> por turno y operador</li>
+        <li><strong>Exportación Excel</strong> para Six Sigma y FMEA</li>
+      </ul>
+      <div class="app-footer">
+        <div class="price-row">
+          <div>
+            <div class="price-label">Implementación</div>
+            <div class="price-val">$8,500 MXN</div>
+            <div class="price-note">Pago único</div>
+          </div>
+          <div>
+            <div class="price-label">Mensualidad</div>
+            <div class="price-val">$1,200 MXN</div>
+            <div class="price-note">Hosting + soporte</div>
+          </div>
+        </div>
+        <div class="price-note">O proyecto completo sin mensualidad: <strong>$18,000 MXN</strong></div>
+        <div class="promo-badge">🎁 Primer mes de soporte técnico gratis</div>
+        <a href="#contacto" class="app-cta">Solicitar información →</a>
+      </div>
+    </div>
+
+    <!-- ALMACÉN -->
+    <div class="app-card">
+      <div class="app-name">Control de Almacén</div>
+      <div class="app-desc">Gestión de inventario con ubicaciones virtuales y códigos QR. Desde el celular, sin lectores especiales.</div>
+      <ul class="app-features">
+        <li><strong>Ubicaciones virtuales</strong> configurables</li>
+        <li><strong>Lectura QR desde cámara</strong> del celular</li>
+        <li><strong>Movimientos en tiempo real</strong></li>
+        <li><strong>Alertas de stock mínimo</strong></li>
+        <li><strong>Reportes de rotación</strong> y sobrestock</li>
+      </ul>
+      <div class="app-footer">
+        <div class="price-row">
+          <div>
+            <div class="price-label">Implementación</div>
+            <div class="price-val">$10,500 MXN</div>
+            <div class="price-note">Pago único</div>
+          </div>
+          <div>
+            <div class="price-label">Mensualidad</div>
+            <div class="price-val">$1,500 MXN</div>
+            <div class="price-note">Hosting + soporte</div>
+          </div>
+        </div>
+        <div class="price-note">O proyecto completo sin mensualidad: <strong>$17,600 MXN</strong></div>
+        <div class="promo-badge">🎁 Primer mes de soporte técnico gratis</div>
+        <a href="#contacto" class="app-cta">Solicitar información →</a>
+      </div>
+    </div>
+
+    <!-- MANTENIMIENTO -->
+    <div class="app-card">
+      <div class="app-name">Control de Mantenimiento</div>
+      <div class="app-desc">Órdenes de trabajo, bitácora preventiva y correctiva, refacciones y KPIs de disponibilidad.</div>
+      <ul class="app-features">
+        <li><strong>Órdenes de trabajo digitales</strong></li>
+        <li><strong>Calendario PM</strong> con alertas automáticas</li>
+        <li><strong>KPIs de respuesta</strong> y resolución</li>
+        <li><strong>Catálogo de refacciones</strong> vinculado a almacén</li>
+        <li><strong>Historial por equipo</strong> con fotos y firma</li>
+      </ul>
+      <div class="app-footer">
+        <div class="price-row">
+          <div>
+            <div class="price-label">Implementación</div>
+            <div class="price-val">$12,000 MXN</div>
+            <div class="price-note">Pago único</div>
+          </div>
+          <div>
+            <div class="price-label">Mensualidad</div>
+            <div class="price-val">$1,800 MXN</div>
+            <div class="price-note">Hosting + soporte</div>
+          </div>
+        </div>
+        <div class="price-note">O proyecto completo sin mensualidad: <strong>$20,000 MXN</strong></div>
+        <div class="promo-badge">🎁 Primer mes de soporte técnico gratis</div>
+        <a href="#contacto" class="app-cta">Solicitar información →</a>
+      </div>
+    </div>
+
+    <!-- CALIDAD -->
+    <div class="app-card">
+      <div class="app-name">Control de Calidad</div>
+      <div class="app-desc">Inspección en proceso y terminado. Planes de control, cartas estadísticas y no conformidades.</div>
+      <ul class="app-features">
+        <li><strong>Planes de control digitales</strong> por referencia</li>
+        <li><strong>Cartas X̄-R</strong> automáticas</li>
+        <li><strong>No conformidades</strong> con flujo completo</li>
+        <li><strong>Dashboard de PPM</strong> y defectos</li>
+        <li><strong>Liberación digital</strong> con trazabilidad</li>
+      </ul>
+      <div class="app-footer">
+        <div class="price-row">
+          <div>
+            <div class="price-label">Implementación</div>
+            <div class="price-val">$14,000 MXN</div>
+            <div class="price-note">Pago único</div>
+          </div>
+          <div>
+            <div class="price-label">Mensualidad</div>
+            <div class="price-val">$2,000 MXN</div>
+            <div class="price-note">Hosting + soporte</div>
+          </div>
+        </div>
+        <div class="price-note">O proyecto completo sin mensualidad: <strong>$22,400 MXN</strong></div>
+        <div class="promo-badge">🎁 Primer mes de soporte técnico gratis</div>
+        <a href="#contacto" class="app-cta">Solicitar información →</a>
+      </div>
+    </div>
+
+    <!-- PERSONALIZADA -->
+    <div class="app-card">
+      <div class="app-name">App personalizada</div>
+      <div class="app-desc">¿Un proceso sin solución en el mercado? Desarrollamos la app exacta que necesitas.</div>
+      <ul class="app-features">
+        <li><strong>Levantamiento</strong> sin costo</li>
+        <li><strong>Propuesta en 2 días</strong> hábiles</li>
+        <li><strong>Prototipo funcional</strong> previo</li>
+        <li><strong>Capacitación incluida</strong></li>
+        <li><strong>Opción código completo</strong> sin pagos futuros</li>
+      </ul>
+      <div class="app-footer">
+        <div class="price-row">
+          <div>
+            <div class="price-label">Implementación</div>
+            <div class="price-val">Cotización</div>
+            <div class="price-note">Según complejidad</div>
+          </div>
+          <div>
+            <div class="price-label">Entrega</div>
+            <div class="price-val">1–3 semanas</div>
+            <div class="price-note">Desde aprobación</div>
+          </div>
+        </div>
+        <div class="promo-badge">🎁 Primer mes de soporte técnico gratis</div>
+        <a href="#contacto" class="app-cta">Solicitar cotización →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRECIOS -->
+<section class="wrap" id="precios">
+  <div class="section-eyebrow">Precios</div>
+  <h2 class="section-title">Dos opciones,<br><span>tú decides</span></h2>
+
+  <div class="pricing-note">
+    <div class="pricing-note-title">Opción A — Implementación + mensualidad</div>
+    <div class="pricing-note-desc" style="margin-bottom:24px">
+      Pagas un costo único de implementación más una mensualidad fija que cubre hosting, soporte técnico, correcciones y actualizaciones.
+    </div>
+    <div class="pricing-note-title">Opción B — Proyecto completo, código tuyo</div>
+    <div class="pricing-note-desc">
+      Un solo pago. El archivo HTML es tuyo. Tú controlas el hosting gratuito y no hay pagos futuros. Soporte posterior por hora.
+    </div>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-tier">Opción A</div>
+      <div class="service-name">Con mensualidad</div>
+      <ul class="service-features">
+        <li>App configurada con tu identidad</li>
+        <li>Hosting incluido</li>
+        <li>Soporte técnico incluido</li>
+        <li>Actualizaciones incluidas</li>
+        <li>Correcciones sin costo</li>
+        <li>1 sesión de capacitación</li>
+        <li>Primer mes de soporte gratis</li>
+      </ul>
+      <a href="#contacto" class="service-cta">Solicitar información →</a>
+    </div>
+
+    <div class="service-card featured">
+      <div class="service-badge">Más solicitado</div>
+      <div class="service-tier">Opción A+</div>
+      <div class="service-name">Premium</div>
+      <ul class="service-features">
+        <li>Todo lo de Opción A</li>
+        <li>Flujo de trabajo personalizado</li>
+        <li>Roles y permisos a medida</li>
+        <li>Dashboard con KPIs propios</li>
+        <li>Soporte prioritario</li>
+        <li>2 sesiones de capacitación</li>
+        <li>Actualizaciones incluidas</li>
+      </ul>
+      <a href="#contacto" class="service-cta">Solicitar información →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-tier">Opción B</div>
+      <div class="service-name">Código tuyo</div>
+      <ul class="service-features">
+        <li>Código fuente entregado</li>
+        <li>Sin pagos mensuales</li>
+        <li>Hosting gratuito</li>
+        <li>Base de datos gratuita</li>
+        <li>Primer mes soporte gratis</li>
+        <li>Soporte posterior por hora</li>
+        <li>2 sesiones de capacitación</li>
+      </ul>
+      <a href="#contacto" class="service-cta">Solicitar información →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCESO -->
+<section class="wrap" id="proceso">
+  <div class="section-eyebrow">Proceso</div>
+  <h2 class="section-title">De la llamada<br><span>a la app en planta</span></h2>
+  <p class="section-desc">Simple y transparente. Sabes exactamente qué pasa en cada paso.</p>
+
+  <div class="process-row">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <div class="process-title">Llamada de 30 min</div>
+      <div class="process-desc">Entendemos tu proceso</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <div class="process-title">Propuesta en 2 días</div>
+      <div class="process-desc">Cotización exacta</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <div class="process-title">Configuración</div>
+      <div class="process-desc">Logo, colores y catálogo</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">4</div>
+      <div class="process-title">Entrega activa</div>
+      <div class="process-desc">URL + accesos + capacitación</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">5</div>
+      <div class="process-title">Soporte continuo</div>
+      <div class="process-desc">Primer mes gratis</div>
+    </div>
+  </div>
+
+  <div class="diff-grid">
+    <div class="diff-item">
+      <div class="diff-label">Propuesta</div>
+      <div class="diff-val">máx. <strong>2</strong> días</div>
+      <div class="diff-desc">Hábiles desde tu solicitud</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-label">Costo vs. ERP</div>
+      <div class="diff-val"><strong>95%</strong> menor</div>
+      <div class="diff-desc">Sin licencias ni infraestructura</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-label">Dispositivos</div>
+      <div class="diff-val"><strong>0</strong> especiales</div>
+      <div class="diff-desc">Funciona en tu celular</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="wrap" id="contacto">
+  <div class="section-eyebrow">Contacto</div>
+  <h2 class="section-title">¿Hablamos de <span>tu proyecto?</span></h2>
+  <p class="section-desc">Cuéntanos qué necesitas. Propuesta detallada en máximo 2 días hábiles. Sin compromiso.</p>
+
+  <div class="contacto-grid">
+    <div class="contacto-info">
+      <h3>Información</h3>
+      <p>Zapopan, Jalisco, México.<br>Atendemos manufactura en toda la república.</p>
+      <div class="contacto-dato">📧 contacto@solucionesindustriales.mx</div>
+      <div class="contacto-dato">📞 +52 33 1234 5678</div>
+      <div class="contacto-dato">📍 Zapopan, Jalisco</div>
+    </div>
+    <div class="contacto-form-wrap">
+      <form id="formulario-contacto" action="https://formspree.io/f/xdayvzng" method="POST">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tu@empresa.com" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+52 33 0000 0000">
+        </div>
+        <div class="form-group">
+          <label for="interes">App de interés</label>
+          <select id="interes" name="interes">
+            <option value="">Selecciona una opción</option>
+            <option value="epp">Control de EPP y BPM's</option>
+            <option value="procesos">Control de Procesos</option>
+            <option value="almacen">Control de Almacén</option>
+            <option value="mantenimiento">Control de Mantenimiento</option>
+            <option value="calidad">Control de Calidad</option>
+            <option value="personalizada">App personalizada</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Describe tu necesidad</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué procesos quieres digitalizar..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title">Listo para dejar<br>el papel en el pasado</h2>
+  <p class="cta-desc">Primera llamada sin costo y sin compromiso. Propuesta en 2 días.</p>
+  <a href="#contacto" class="btn-hero-p">Agendar llamada gratuita</a>
+</section>
+
+<footer>
+  <div class="footer-brand">Soluciones Industriales · Apps a medida para manufactura</div>
+  <div class="footer-copy">© 2026 · Zapopan, Jalisco, México</div>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+  var form = document.getElementById('formulario-contacto');
+  form.addEventListener('submit', function(e) {
+    setTimeout(function() {
+      var nombre = document.getElementById('nombre').value;
+      alert('✅ ¡Gracias ' + nombre + '!\n\nHemos recibido tu solicitud. Te contactaremos en máximo 2 días hábiles.');
+      form.reset();
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>
