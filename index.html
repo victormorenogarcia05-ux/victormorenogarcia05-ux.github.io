@@ -200,90 +200,58 @@
       margin-top: 4px;
     }
 
-    /* ── MARQUEE 3D ── */
-    .marquee-3d-container {
+    /* ── MARQUEE (versión plana con esquinas redondeadas y efecto glass) ── */
+    .marquee-container {
       width: 100%;
       overflow: hidden;
-      background: #f5f5f5;
-      border-top: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
-      padding: 40px 0;
-      perspective: 1200px;
-      position: relative;
+      background: transparent;                    /* sin fondo gris */
+      padding: 32px 0;
+      margin-bottom: 0;
     }
 
-    .marquee-3d-track {
+    .marquee-track {
       display: flex;
-      gap: 40px;
+      gap: 24px;
       width: max-content;
-      animation: marquee-3d-scroll 50s linear infinite;
-      transform-style: preserve-3d;
-      padding: 0 20px;
+      animation: marquee-scroll 45s linear infinite;
     }
 
-    .marquee-3d-track:hover {
+    .marquee-track:hover {
       animation-play-state: paused;
     }
 
-    .marquee-3d-item {
+    .marquee-item {
       flex-shrink: 0;
       width: 660px;
       height: 420px;
-      border-radius: 16px;
+      border-radius: 20px;                         /* esquinas redondeadas */
       overflow: hidden;
-      background: #ffffff;
-      transform: rotateY(15deg) scale(0.9);
-      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
+      background: rgba(255, 255, 255, 0.25);       /* base glass */
+      backdrop-filter: blur(12px);                 /* desenfoque del fondo */
+      -webkit-backdrop-filter: blur(12px);         /* compatibilidad Safari */
+      border: 1px solid rgba(255, 255, 255, 0.5);  /* borde sutil */
       box-shadow:
-        0 20px 40px rgba(0,0,0,0.15),
-        0 10px 15px rgba(0,0,0,0.1),
-        0 0 0 1px rgba(0,0,0,0.05);
-      position: relative;
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);  /* brillo interior */
+      transition: box-shadow 0.4s ease, transform 0.3s ease;
     }
 
-    .marquee-3d-item:hover {
-      transform: rotateY(0deg) scale(1.02);
+    .marquee-item:hover {
       box-shadow:
-        0 25px 50px rgba(0,0,0,0.2),
-        0 15px 25px rgba(0,0,0,0.15),
-        0 0 0 2px rgba(0,0,0,0.1);
-      z-index: 2;
+        0 12px 40px rgba(0, 0, 0, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+      transform: scale(1.02);
     }
 
-    .marquee-3d-item img {
+    .marquee-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 16px;
+      border-radius: 20px;                         /* hereda el redondeo */
     }
 
-    /* Efecto de profundidad adicional con pseudo-elementos */
-    .marquee-3d-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 150px;
-      height: 100%;
-      background: linear-gradient(to right, #f5f5f5 0%, transparent 100%);
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    .marquee-3d-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 150px;
-      height: 100%;
-      background: linear-gradient(to left, #f5f5f5 0%, transparent 100%);
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    @keyframes marquee-3d-scroll {
+    @keyframes marquee-scroll {
       0% {
         transform: translateX(0);
       }
@@ -293,18 +261,16 @@
     }
 
     @media (max-width: 768px) {
-      .marquee-3d-container {
+      .marquee-container {
         padding: 24px 0;
-        perspective: 800px;
       }
-      .marquee-3d-item {
+      .marquee-item {
         width: 300px;
         height: 200px;
-        transform: rotateY(10deg) scale(0.95);
-        border-radius: 12px;
+        border-radius: 14px;
       }
-      .marquee-3d-item img {
-        border-radius: 12px;
+      .marquee-item img {
+        border-radius: 14px;
       }
     }
 
@@ -888,18 +854,16 @@
         padding: 32px 24px;
       }
 
-      .marquee-3d-container {
+      .marquee-container {
         padding: 24px 0;
-        perspective: 800px;
       }
-      .marquee-3d-item {
+      .marquee-item {
         width: 300px;
         height: 200px;
-        transform: rotateY(10deg) scale(0.95);
-        border-radius: 12px;
+        border-radius: 14px;
       }
-      .marquee-3d-item img {
-        border-radius: 12px;
+      .marquee-item img {
+        border-radius: 14px;
       }
     }
   </style>
@@ -985,26 +949,26 @@
     </div>
   </section>
 
-  <!-- MARQUEE 3D -->
-  <div class="marquee-3d-container">
-    <div class="marquee-3d-track">
-      <div class="marquee-3d-item">
+  <!-- MARQUEE CON IMÁGENES (ESQUINAS REDONDEADAS + EFECTO GLASS) -->
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <div class="marquee-item">
         <img src="img/marquee-almacen.png" alt="Control de Almacén">
       </div>
-      <div class="marquee-3d-item">
+      <div class="marquee-item">
         <img src="img/marquee-dashboard.png" alt="Tablero de Indicadores">
       </div>
-      <div class="marquee-3d-item">
+      <div class="marquee-item">
         <img src="img/marquee-seguridad.png" alt="Seguridad EPP">
       </div>
       <!-- Duplicados para scroll infinito -->
-      <div class="marquee-3d-item">
+      <div class="marquee-item">
         <img src="img/marquee-almacen.png" alt="Control de Almacén">
       </div>
-      <div class="marquee-3d-item">
+      <div class="marquee-item">
         <img src="img/marquee-dashboard.png" alt="Tablero de Indicadores">
       </div>
-      <div class="marquee-3d-item">
+      <div class="marquee-item">
         <img src="img/marquee-seguridad.png" alt="Seguridad EPP">
       </div>
     </div>
